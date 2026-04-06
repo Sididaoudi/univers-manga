@@ -1,0 +1,359 @@
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* max-width: 300px; */
+    /* outline: rgba(255, 255, 255, 0.2); */
+    box-shadow: 2px 4px 10px -2px rgba(11, 195, 152, 0.25);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    position: relative;
+    visibility: hidden;
+    border: 1px solid red;
+
+}
+
+.search-container>input[type="search"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--title-color-main);
+    flex: 1;
+
+}
+
+
+
+.search-container:focus-within {
+    box-shadow: 2px 4px 10px -2px rgba(11, 195, 152, 0.25);
+    color: var(--title-color-main);
+}
+
+#search {
+    display: flex;
+    justify-content: center;
+}
+
+.search-container.active {
+    display: block;
+}
+
+.fa-search {
+    color: var(--title-color-main);
+    cursor: pointer;
+    visibility: visible;
+}
+
+.search-autocomplete {
+    /* display: none; */
+    position: absolute;
+    top: 100%;
+    /* Se colle juste en dessous de la barre (100% de la hauteur du parent) */
+    left: 0;
+    /* S'aligne à gauche */
+    width: 100%;
+    /* Prend la même largeur que la barre de recherche */
+    /* background: var(--back-ground-color-second); */
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+    max-height: 300px;
+    /* Empêche la liste d'être infinie */
+    overflow-y: auto;
+    /* Ajoute un scroll si la liste est trop longue */
+    z-index: 999;
+}
+
+.search-autocomplete li {
+    display: flex;
+    /* Image à gauche, texte à droite*/
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    height: auto;
+    /* Annule la hauteur fixe des cartes normales */
+    width: 100%;
+    /* Idem mais pour la largeur fixe */
+}
+
+.search-autocomplete li img {
+    width: 90px;
+    height: 170px;
+    object-fit: cover;
+}
+
+.search-autocomplete li h3 {
+    font-size: 0.9rem;
+    text-align: left;
+    margin: 0;
+}
+
+/* quand la liste n'est pas vide */
+
+.search-autocomplete.active {
+    display: block;
+
+}
+
+.search input[type="search"] {
+    border: 1px solid red;
+    visibility: visible;
+}
+
+  /* nav span {
+    display: block;
+    height: 4px;
+    width: 30px;
+    margin-bottom: 5px;
+    background: var(--back-ground-color-second);
+    border-radius: 3px;
+    z-index: 100;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+    cursor: pointer;
+  } */
+
+
+/***** Responsive *****/
+
+@media screen and (width: 1280px) {}
+
+@media screen and (width > 800px) {
+    #bars {
+        color: white;
+        cursor: pointer;
+        font-size: 50px;
+        visibility: hidden;
+    }
+}
+
+@media screen and (width <=800px) {
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 100%;
+        position: relative;
+        z-index: 99;
+        /* height: 100vh; */
+
+    }
+
+    nav>ul {
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(-110%);
+        position: absolute;
+        /* z-index: 99; */
+        transition: transform 3s ease-in-out;
+        gap: 2rem;
+        background: var(--back-ground-color-main);
+        top: 10px;
+        left: 0px;
+        width: 100%;
+    }
+
+    nav span {
+        display: block;
+        position: absolute;
+        height: 4px;
+        width: 10%;
+        margin-bottom: 5px;
+        background: var(--back-ground-color-second);
+        border-radius: 3px;
+        z-index: 100;
+        opacity: 1;
+        left: 0;
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: 0.25s ease-in-out;
+        -moz-transition: 0.25s ease-in-out;
+        -o-transition: 0.25s ease-in-out;
+        transition: 0.25s ease-in-out;
+        cursor: pointer;
+    }
+
+    nav span:nth-child(1) {
+        top: 0px;
+        /* transform-origin: left top; */
+    }
+
+    nav span:nth-child(2) {
+        top: 15px;
+    }
+
+    nav span:nth-child(3) {
+        top: 24px;
+    }
+
+    nav span:nth-child(1) {
+        width: 40px;
+    }
+
+    /** le deuxième span disparait **/
+
+    nav span:nth-child(2) {
+        width: 40px;
+        opacity: 1;
+    }
+
+    nav span:nth-child(3) {
+        width: 40px;
+        /* transform: rotate(-45deg); */
+    }
+
+    /** le troisième span fait une rotation à -45deg **/
+
+    nav span:nth-child(3) {
+        width: 40px;
+        /* transform: rotate(-45deg); */
+    }
+
+    #span-bars {
+        width: 40px;
+        height: 30px;
+        top: 0px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    /** première rotation à 45 degrés **/
+
+    #span-bars.open span:nth-child(1) {
+        top: 15px;
+        transform: rotate(45deg);
+        transition: transform 0.3s, top 0.3s, opacity 0.3s;
+    }
+
+    #span-bars.open span:nth-child(2) {
+        opacity: 0;
+
+    }
+
+    #span-bars.open span:nth-child(3) {
+        top: 15px;
+        transform: rotate(-45deg);
+    }
+
+    nav>ul.menu-open {
+        transform: translateX(0%);
+    }
+
+    .show-cross-bar {
+        visibility: visible;
+        color: white;
+        cursor: pointer;
+        font-size: 50px;
+        visibility: visible;
+        z-index: 99;
+    }
+
+    /* Section best-rated */
+    .section-titles {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .scroll-row>li>img {
+        height: 250px;
+    }
+
+    .slides-arrows .prev,
+    .next {
+        width: 40px;
+        height: 50px;
+    }
+
+
+    .fa-arrow-left,
+    .fa-arrow-right {
+        font-size: 14px;
+    }
+
+    .more-btn {
+        opacity: 0;
+        width: 50px;
+        height: 50px;
+        transition: opacity 0.3s ease;
+        border-radius: 5px;
+        cursor: pointer;
+        position: absolute;
+        top: 55%;
+        left: 40%;
+        background: #fff;
+        padding: 10px;
+        color: #000;
+        font-weight: 500;
+        font-size: 0.6rem;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+
+    /* Fin Section best-rated */
+
+    /* Section critiques */
+
+    .latest-reviews-list-cards {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .latest-reviews-list-cards {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        width: 100%;
+    }
+
+    .latest-reviews-list-cards>li {
+        padding: 1rem;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        margin: 1rem;
+        position: relative;
+    }
+
+    .latest-reviews-list-cards>li>img {
+        width: 100%;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        object-fit: cover;
+    }
+
+    /* Fin Section critiques */
+
+}
+
+
+
+
+
+
+/***** Fin Responsive *****/

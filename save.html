@@ -1,0 +1,210 @@
+    Dans la page d'accueil : 
+
+                <!-- The modal -->
+                <!-- <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+                        <img  id="modal-img" alt="modal img">
+                        <h3 id="modal-title"></h3>
+                        <p id="modal-text"></p>
+                    </div>
+                </div> -->
+                <!-- End of The modal -->
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Univers Manga</title>
+    <link rel="icon" type="image/png" href="/src/logo/logo.png" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <div id="span-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <i class="fa-solid fa-x" id="cross"></i>
+            <div id="logo">
+                    <a href="/index.html">
+                        <img src="/src/logo/logo.png" alt="logo Univers Manga">
+                    </a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/allmanga.html">Tous les mangas</a>
+                </li>
+
+                <li>
+                    <a href="/critiques.html">Critiques</a>
+                </li>
+
+                <li>
+                    <a href="/editeurs.html">Editeurs</a>
+                </li>
+
+                <li>
+                    <i class="fas fa-search" id="search-magnifier"></i>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Recherche-->
+        <search class="search-container">
+            <input type="search" id="search" placeholder="Recherche par titre ou par auteur">
+
+            <ul class="search-autocomplete"></ul>
+
+            <button id="search-close">Fermer la recherche</button>
+        </search>
+        <!--Fin recherche -->
+
+
+    </header>
+   
+
+  <main id="main-content">
+
+   <!-- Section Hero -->  
+   <section id="hero">
+
+        <div class="hero-bg-img-container">
+            <img src="/src/img/Hero-Bg-image.jpeg" alt="Manga Hero image" id="hero-bg-image">
+        </div>
+
+        <div class="hero-bg-overlay"></div>
+        
+        <div class="hero-card">
+            <h1 class="hero-title">Vinland Saga</h1>
+
+            <p class="hero-description">
+                Dans une Europe ravagée par les guerres vikings, le jeune Thorfinn ne vit que pour une chose : venger son père, un guerrier légendaire tombé au combat. Élevé parmi les mercenaires qui ont détruit sa vie, il grandit entre batailles sanglantes, trahisons et rêves d’un pays lointain où la violence n’existe pas : Vinland.
+
+                C’est l’histoire d’une quête de liberté, d’honneur et de survie, où chaque choix peut faire basculer un homme vers la gloire… ou vers l’abîme.
+            </p>
+
+            <!-- <button> Je découvre la série </button> -->
+        </div>
+    </section>
+    <!-- Fin Section Hero --> 
+
+    <!-- Sections -->
+    <div class="section-wrapper">
+        
+         <!-- Section les mieux notés -->
+        <section class="best-rated">
+
+            <div class="best-rated-cards">
+
+            <div class="section-titles">
+                 <h2>Le top Manga</h2>
+                 <a href="/allmanga.html">Tous les top Mangas</a>
+            </div>
+        
+            <div class="slides-container">
+                <ul class="scroll-row"></ul>
+                
+                <!-- flèches pour défiler -->
+                <div class="slides-arrows">
+                    <a class="prev"><i class="fa-solid fa-arrow-left"></i></a>
+                    <a class="next"><i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <!-- Fin flèches pour défiler -->
+                                              
+            </div>
+        </div>
+
+        </section>  
+        <!-- Fin Section les mieux notés -->  
+
+        <!-- Section critiques -->
+        <section class="reviews">
+
+            <div class="latest-reviews-cards">
+
+                <div class="section-titles">
+                    <h2>Dernières critiques</h2>
+                    <a href="/critiques.html">Toutes les critiques</a>
+                </div>
+            
+                <div class="slides-container">
+                    <ul class="latest-reviews-cards-list"></ul>
+                </div>
+            </div>
+
+        </section>  
+        <!-- Fin de la Section critiques -->
+
+
+        <!-- Section mangas par genres -->
+        <section class="genres">
+
+            <div class="genres-cards">
+
+                <div class="section-titles">
+                    <h2>Manga par genre</h2>
+                    <a href="/genres.html">Tous les Manga par genres</a>
+                </div>
+            
+        
+                <!-- <div class="slides-container">
+                    <ul class="genres-cards-list"></ul>
+                </div> -->
+
+                <div class="cards-list">
+                    <ul class="genres-cards-list"></ul>
+                </div>
+            </div>
+
+        </section>  
+        <!-- Fin de la Section mangas par genres -->
+
+
+        <!-- Section test -->
+        <section class="genres">
+
+            <div class="section-titles">
+                <h2>Test</h2>
+                <a href="/genres.html">Tous les Manga par genres</a>
+            </div>
+            
+            <div class="products-list">
+                <ul class="genres-list-cards"></ul>
+            </div>
+
+
+        </section>  
+        <!-- Fin de la Section Test -->
+        
+    </div>
+    <!-- Fin des Sections -->
+
+
+
+
+  </main>
+
+  <footer>
+    
+    <div class="container">
+        <p>Sidi Daoudi</p>
+        <p>2026</p>
+    </div>
+
+
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+    
+</body>
+</html>

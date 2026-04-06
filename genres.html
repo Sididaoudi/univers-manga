@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <div id="span-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <i class="fa-solid fa-x" id="cross"></i>
+            <div id="logo">
+                    <a href="/index.html">
+                        <img src="/src/logo/logo.png" alt="logo Univers Manga">
+                    </a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/allmanga.html">Tous les mangas</a>
+                </li>
+
+                <li>
+                    <a href="/critiques.html">Critiques</a>
+                </li>
+
+                <!-- <li>
+                    <a href="/critiques.html">Editeurs</a>
+                </li> -->
+
+                <li>
+                    <i class="fas fa-search" id="search-magnifier"></i>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Recherche-->
+        <search class="search-container">
+            <input type="search" id="search" placeholder="Recherche par titre ou par auteur"> >
+
+            <ul class="search-autocomplete"></ul>
+
+            <button id="search-close">Fermer la recherche</button>
+        </search>
+        <!--Fin recherche -->
+
+
+    </header>
+   
+
+  <main id="main-content">
+
+    <div class="page-content">
+
+        <div class="select-content">
+
+            <div class="select">
+                <label for="dates">Année</label> <br />
+
+                <select name="years" id="years">
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                </select>
+
+                <label for="hr-select">Mois</label> <br />
+
+                <select name="months" id="months">
+                    <option value="january" >Janvier</option>
+                    <option value="february">Février</option>
+                    <option value="march" >Mars</option>
+                    <option value="april" >Avril</option>
+                    <option value="may" >Mai</option>
+                    <option value="june">Juin</option>
+                    <option value="july" >Juillet</option>
+                    <option value="august" >Août</option>
+                    <option value="september" >Septembre</option>
+                    <option value="october" >Octobre</option>
+                    <option value="november">Novembre</option>
+                    <option value="december" >Décembre</option>
+                </select>
+
+                <button id="filter">Filtrer</button>
+
+                <button id="reset">Réinitialiser</button>
+            </div>
+        
+        </div>
+
+           
+        <div class="all-product">
+
+            <div class="cards-product-container">
+                
+                <ul class="card-product"></ul>
+
+            </div>
+
+        </div>
+    
+    </div>
+
+  </main>
+
+   <footer>
+    
+    <div class="container">
+        <p>Sidi Daoudi</p>
+        <p>2026</p>
+
+    </div>
+
+
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="critiques.js"></script>
+    
+</body>
+</html>

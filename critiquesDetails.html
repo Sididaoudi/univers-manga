@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critique manga</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+   <header>
+        <nav>
+            <div id="span-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <i class="fa-solid fa-x" id="cross"></i>
+            <div id="logo">
+                    <a href="/index.html">
+                        <img src="/src/logo/logo.png" alt="logo Univers Manga">
+                    </a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/allmanga.html">Tous les mangas</a>
+                </li>
+
+                <li>
+                    <a href="/critiques.html">Critiques</a>
+                </li>
+
+                <!-- <li>
+                    <a href="/editeurs.html">Editeurs</a>
+                </li> -->
+
+                <li>
+                    <i class="fas fa-search" id="search-magnifier"></i>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Recherche-->
+        <search class="search-container">
+            <input type="search" id="search" placeholder="Recherche par titre ou par auteur">
+
+            <ul class="search-autocomplete"></ul>
+
+            <button id="search-close">Fermer la recherche</button>
+        </search>
+        <!--Fin recherche -->
+
+    </header>
+   
+   
+
+  <main id="main-content">
+
+    <section class="produit">
+
+           <div class="manga-wrapper">
+
+            <article class="manga-card-pro">
+            
+            <!--Informations à gauche-->
+            <aside class="manga-visual">
+                <img src="" alt="image manga" id="details-img">
+                <div class="rating-badge"></div>
+
+                 <div class="product-buy">
+                    <button> 
+                        <a href="">Acheter sur Fnac</a>
+                    </button>
+                </div>
+                
+            </aside>
+            <!-- Fin Informations à gauche-->
+
+
+            <!--Informations à Droite-->
+            <div class="manga-info">
+                <header class="manga-header">
+                    <h1 id="details-title"></h1>
+                    <!-- <span class="original-title">Titre traduit :</span> -->
+                </header>
+
+                <div class="synopsis">
+                    <!-- <h2>Résumé : </h2> -->
+                    <p id="details-synopis"></p>
+                </div>
+
+                <div class="meta-data">
+                    <dl>
+                        <dt>Titre original : </dt>
+                        <dd id="details-original-title"></dd>
+                        <dt>Auteur(s) :</dt>
+                        <dd id="details-author"></dd>
+
+                        <dt>Editeur français : </dt>
+                        <dd id="details-editor"></dd>
+
+                        <dt>Editeur original : </dt>
+                        <dd id="details-editor-original"></dd>
+
+                        <dt>Nombres de tomes en France : </dt>
+                        <dd id="details-number-of-volumes-french"></dd>
+
+                        <dt>Nombres de tomes au Japon : </dt>
+                        <dd id="details-number-of-volumes-japan"></dd>
+
+                        <dt>Nombres de Pages : </dt>
+                        <dd> 192</dd>
+
+                        <dt>Genre :</dt>
+                        <dd id="details-type">Shonen</dd>
+                    </dl>
+                </div>
+            </div>
+
+
+            <!-- Fin Informations à Droite-->
+        </article>
+
+        <!-- Produits du même auteur-->
+        <div class="product-others">
+             <div class="section-titles">
+                 <h2>Du même auteur</h2>
+                 <!-- <a href="">Voir tous les titres de</a> -->
+            </div>
+
+            <div class="product-content">
+                <ul class="product-content-list"></ul>
+            </div>
+        </div>
+        <!-- Fin Produits du même auteur-->
+
+        </div>
+
+    </section>
+
+ 
+
+    <!-- Fin Conteneur de la page-->
+  </main>
+
+    <footer>
+    
+    <div class="container">
+        <p>Sidi Daoudi</p>
+        <p>2026</p>
+
+    </div>
+
+
+  </footer>
+
+
+  <script src="data.js"></script>
+  <script src="details.js"></script>
+    
+</body>
+</html>
