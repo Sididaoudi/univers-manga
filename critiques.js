@@ -119,18 +119,18 @@ search.addEventListener('input', (e) => {
 
 // tableau de référence qui contiens les mois
 
+// je créer une constante qui contient un tableau des mois
 const monthNames = ["january", "february", "march", "april", "may","june", "july", "august", "september", "october", "november", "december"];
 
 function getMangaCard(manga, showNote, showTitle, showType, isSearchResult) {
-  // je créer le li, image et le h3 et le span
+  // je créer le li et l'image
   let li = document.createElement("li");
   let img = document.createElement("img");
-  // let title = document.createElement("h3");
 
-  // je "remplie" l'image et le titre et le span
+  // je "remplie" l'image
   img.src = manga.img;
 
-  // je mets l'image et le titre dans le li
+  // je mets l'image dans le li
   li.appendChild(img);
 
   if (showNote) {
@@ -157,11 +157,16 @@ function getMangaCard(manga, showNote, showTitle, showType, isSearchResult) {
     console.log("test");
   }
 
-  // je créé une "étiquette" personnalisée sur le li que j'appelle 'id'
-  // cette dernière sert de clé pour savoir quel manga est affiché
-  // dans cette carte
+  /*
+    J'utilise 'dataset' pour CRÉER une information personnalisée sur mon élément <li></li> donc là "id"
+
+    Je stocke l'identifiant du manga (manga.id) directement dans le HTML
+
+    Cela crée une "étiquette" appelée 'data-id' qui sert de clé
+
+    Plus tard, je pourrai "lire" cette étiquette pour savoir quel manga a été cliqué
+  */
   li.dataset.id = manga.id;
-  
 
   li.addEventListener("click", () => {
     // si je fais une recherche donc si c'est true
@@ -219,7 +224,25 @@ console.log(btnReset);
 
 
 
+/*
+  Je parcours mon tableau mangaData (mon fichier data.js)
 
+  J'applique la méthode "sort", je mets "a" et "b" comme paramètres, ils représente mon tableau mangaData
+
+  je créer une première variable "firstDate" qui prends comme valeur le constructeur Date() (new Date qui permet 
+
+  de créer un objet Date) en paramètre je lui dit "prends la propriété notationDate de a (donc de mon tableau mangaData) et
+  
+  converti ma propriété notationDate, par exemple notationDate: "2024-04-21", en objet Date donc Dimanche 21 Avril 2024 "
+
+  puis je "retourne" secondDate - firstDate qui permet de trier plus récent au plus ancien
+
+  Puis je parcours mon tableau avec forEach : pour chaque manga (paramètre qui représente mon tableau mangaData) je crée 
+
+  une variable 'cardEleement à laquelle j'assigne l'appel de ma fonction getMangaCard
+
+  Pour finir je "colle" à mon élément html <ul class="card-product"></ul> ma variable 'cardElement grâce à appendChild
+*/
 mangaData
   .sort((a, b) => {
     let firstDate = new Date(a.notationDate); // je convertis les dates en objets new Date()
@@ -228,27 +251,27 @@ mangaData
   }) // Fin du filtre
   .forEach((manga) => {
     // boucle foreach, pour chaque manga
-    let cardElement = getMangaCard(manga, true, true); // je créer la variable cardElement qui prends l'appel de la fonction getTopManga(manga)
+    let cardElement = getMangaCard(manga, true, true); // je créer la variable cardElement qui prends l'appel de la fonction getMangaCard
 
     // let cardNotation = getMangaNote(manga);
     cardProducts.appendChild(cardElement); // j'ajoute à la liste cardProducts ma variable cardElement
 
-    // latestReviewsCards.appendChild(cardNotation);
 });
 
 btnFilter.addEventListener('click', (e) => {
   // je crée deux variables : selectedMonth et selectedYear
 
+  // je crée une variable 'selectedMonth' qui stocke la 'valeur' de ma variable 'months' qui elle même pointe mon élément <select name="months" id="months">
   let selectedMonth = months.value;
 
   console.log(selectedMonth);
 
+  // je crée une variable 'selectedYear' qui stocke la 'valeur' de ma variable 'years' qui elle même pointe mon élément <select name="years" id="years">
   let selectedYear = years.value;
 
   console.log(selectedYear);
 
   console.log(selectedMonth, selectedYear);
-  
 
   /**
    * une fois que c'est fait je filtre mangaData
@@ -271,91 +294,104 @@ btnFilter.addEventListener('click', (e) => {
    *
    *
    * notationDate = la date de la notation par exemple notationDate: "2025-05-03"
-   * 
+   *
    * mais c'est du texte actuellement, donc cette variable doit être
-   * 
+   *
    * converti en objet Date
-   * 
-   * Pas besoin du if 
+   *
+   * Pas besoin du if
    */
 
+  /*
+    J'ai mon tableau mangaData à qui j'applique la méthode 'filter'
 
+    Je mets un nom 'manga' qui représente mon tableau mangaData
+
+    Je crée une variable 'dateObj' qui va stocker la création d'une date 'new Date' avec en paramètre 'manga.notationDate' je demande à JS de 'regarder'
+
+    la propriété 'notationDate' qui se trouve dans mon fichier data.js
+  */
   mangaData
-      .filter((manga) => {
-        // je converi en objet Date ma propriété notationDate
-        let dateObj = new Date(manga.notationDate);
+    .filter((manga) => {
+      // je converi en objet Date ma propriété notationDate
+      let dateObj = new Date(manga.notationDate);
 
-        // je veux récupérer l'année et le mois de cet objet
-        let year = dateObj.getFullYear();
-        let month = dateObj.getMonth(); // donne un chiffre
-
-        // console.log(year,month);
-
-        // les mangas apparaissent uniquement SI
-        // l'année du manga correspond à l'année sélectionnée
-        // ET idem pour le mois
-
-        // if (month === selectedMonth && year === selectedYear) {
-        //   mangaDisplay = mangaData.filter(
-        //     (manga) => manga.type.toLowerCase() === selectedMonth && selectedYear,
-        //   );
-        // }
-
-
-          // je transforme en texte les mois, car actuellement 
-          // il m'affiche les mois en numéro 
-          
-        // monthNames = dateObj.getMonth();
-
-        // let months = monthNames.toString();
-        // console.log("Hello" + months);
+      // je veux récupérer l'année et le mois de cet objet
+      /*
+        Je crée deux variables 'year' et 'month'  qui vont prendre comme valeur ma variable dateObj (qui est une date)
         
-        // console.log(monthNames);
-        
-        // console.log("oui" + monthNames[0]);
+        puis j'utilise les méthodes .getFullYear() et .getMonth() qui permettent de retourner 
 
-        // je récupère le numéro du mois qui se trouve 
-        // dans mon tableau monthNames
+        l'année et le mois de la date renseignée d'après l'heure locale, en gros ça permet de passé  de 2024-04-21 à  2024 et Avril par exemple
+      */
+      let year = dateObj.getFullYear();
+      let month = dateObj.getMonth(); // donne un chiffre
 
-        let monthNumber = dateObj.getMonth();
+      // console.log(year,month);
 
-        // console.log( manga.title + monthNumber);
-        
- 
-        
-        // je récuppère le nom en lettre du mois du manga que j'ai noté en dernier
-        
-        let mangaMonthName = monthNames[monthNumber];
+      // les mangas apparaissent uniquement SI
+      // l'année du manga correspond à l'année sélectionnée
+      // ET idem pour le mois
 
-        // console.log("Le mois" + " " + mangaMonthName);
-        
-        /***
-         * 
-         * Il faut comparer SI le mois du manga 
-         * 
-         * grâce à ma variable mangaMonthName (qui me donne le nom du mois en lettre et non plus en chiffre) 
-         * 
-         *  elle est identique au mois que je sélectionne dans le menu déroulant
-         * 
-         * Idem pour l'année
-         */
-        
-        // Si le nom du mois du manga (qui existe dans notationDate) est égale à mois que j'ai sélectionné la liste
-        // ET que l'année (idem notationDate)
-        if (mangaMonthName == selectedMonth && year == selectedYear) {
-          
-          return true; // alors renvoie le ou les mangas
-          
-        }
-        else { // sinon j'afffiche un message
-           cardProducts.innerHTML = `
+      // if (month === selectedMonth && year === selectedYear) {
+      //   mangaDisplay = mangaData.filter(
+      //     (manga) => manga.type.toLowerCase() === selectedMonth && selectedYear,
+      //   );
+      // }
+
+      // je transforme en texte les mois, car actuellement
+      // il m'affiche les mois en numéro
+
+      // monthNames = dateObj.getMonth();
+
+      // let months = monthNames.toString();
+      // console.log("Hello" + months);
+
+      // console.log(monthNames);
+
+      // console.log("oui" + monthNames[0]);
+
+      // je récupère le numéro du mois qui se trouve
+      // dans mon tableau monthNames
+
+      // je crée une nouvelle variable 'monthNumber' qui stocke ma variable 'dateObj' et j'utilise la méthode 'getMonth() qui permet de récupérer le mois
+      // et MonthNumber affiche le numéro du mois, par exemple '4' pour Avril une fois après avoir sélectionner un mois dans le select
+      let monthNumber = dateObj.getMonth();
+      console.log(monthNumber);
+      
+
+      // console.log( manga.title + monthNumber);
+
+      // je récuppère le nom en lettre du mois du manga que j'ai noté en dernier
+
+      let mangaMonthName = monthNames[monthNumber];
+
+      // console.log("Le mois" + " " + mangaMonthName);
+
+      /***
+       *
+       * Il faut comparer SI le mois du manga
+       *
+       * grâce à ma variable mangaMonthName (qui me donne le nom du mois en lettre et non plus en chiffre)
+       *
+       *  elle est identique au mois que je sélectionne dans le menu déroulant
+       *
+       * Idem pour l'année
+       */
+
+      // Si le nom du mois du manga (qui existe dans notationDate) est égale à mois que j'ai sélectionné la liste
+      // ET que l'année (idem notationDate)
+      if (mangaMonthName == selectedMonth && year == selectedYear) {
+        return true; // alors renvoie le ou les mangas
+      } else {
+        // sinon j'afffiche un message
+        cardProducts.innerHTML = `
 
             <p class="error-message"> Désolé, aucun manga ne correspond la date choisie.</p>`;
-          
-        }
-        cardProducts.innerHTML = "";
-      }) // Fin du filtre
-    
+      }
+      cardProducts.innerHTML = "";
+    }) // Fin du filtre
+
     .forEach((manga) => {
       // boucle foreach, pour chaque manga
       let cardElement = getMangaCard(manga, false, true); // je créer la variable cardElement qui prends l'appel de la fonction getTopManga(manga)

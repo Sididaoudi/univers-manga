@@ -71,15 +71,53 @@
 // console.log(found); // undefined
 
 // URLSearchParam : permet de lire ce qu'il y a après le "?"
+//  window.location.search va chercher le texte brut dans l'url par exemple "?id=1"
 const urlParams = new URLSearchParams(window.location.search);
 
+/*  
+
+    Je créer une constante urlParams, puis je créer un nouvel objet de type URLSearchParams 
+
+    en paramètre j'utilise window.location.search qui va "chercher" le texte brut dans l'url, par exemple "?id=1"
+
+    new URLSearchParams permet de créer un objet capable de lire le texte dans l'URL
+
+    Donc ici 
+
+    je créer une constante urlParams qui prends comme valeur un nouvel objet URLSearchParams
+
+    URLSearchParams = c'est un constructeur, cela crée un objet "intelligent" qui contient des outils pour manipuler les paramètres
+
+   URLSearchParams prend comme paramètre l'objet window.location.search 
+
+   donc prends la propriété "search" qui se trouve dans l'objet location (lui même qui se trouve dans l'objet window)
+
+    window.location = objet global qui contient toutes les informations de l'URL
+
+    le "search" = c'est une propriété de l'objet window, elle donne uniquement une 
+    
+    chaine de caractères (un string), un texte brut qui commence par le "?"
+
+    
+*/
+
+// je créer une constante qui prends comme valeur
+// urlParams (ma constante) puis je mets .get et dedans je lui indique ce que je veux récupérer
+// donc le paramètre "id"
 const mangaId = urlParams.get("id");
+// urlParams.get("id") extrait la valeur précise liée à "l'id" par exemple Le texte "123" 
 
-console.log(mangaId);
+// console.log(mangaId);
 
+
+//  mangaIdNum c'est l'ID qui est dans l'URL
 // convertir string en int
-
 const mangaIdNum = parseInt(mangaId);
+// je récupère la valeur associé à "id" dans l'url
+// .get() renvoie toujours du texte
+// parseInt() permet de changer ce texte par exemple "123"
+
+// donc à la fin mangaIdNum est un nombre, exemple id=1
 
 // console.log(mangaIdNum); // vrai nombre à utiliser
 
@@ -133,7 +171,7 @@ const mangaIdNum = parseInt(mangaId);
 /* 
     Je créer une variable "current manga" qui prends 
 
-    le tableau et j'applique la méthode find
+    le tableau (donc mon fichier data.js) et j'applique la méthode find
     
     j'utilise "manga" comme élement
 
@@ -143,6 +181,11 @@ const mangaIdNum = parseInt(mangaId);
 */
 let currentManga = mangaData.find((manga) => manga.id == mangaIdNum);
 
+/*
+    Si le manga actuel est différent de "indefini" en gros si le manga actuel existe
+
+    je créer une variable mangaImg qui récupère l'id de mon élement html    <img src="" alt="image manga" id="details-img">
+*/
 if (currentManga != undefined) {
     let mangaImg = document.getElementById("details-img");
 
@@ -199,7 +242,7 @@ if (currentManga != undefined) {
     console.log(productBuyBtn);
 
 
-    // Si currentManga.urlFnac existe 
+    // Si dans currentManga la propriété "urlFnac" existe 
     if (currentManga.urlFnac) {
       // J'injecte l'URL du manga dans le lien du bouton grâce à la propriété href
       productBuyBtn.href = currentManga.urlFnac;
@@ -338,25 +381,47 @@ console.log(productList);
 
 // OU alors je créer une fonction diplayMangaSameAuthor
 
+// fonction qui permet d'afficher tous les mangas d'un auteur sur la même page
 function diplayMangaSameAuthor() {
+  // je créer ma variable currentMangaAuthor qui prends comme valeur la variable currentManga (la page du manga sur laquelle je me trouve)
+  // je prends plus précisement la propriété "author", currentManga = mon tableau de données de mangas (mon fichier data.js)
   let currentMangaAuthor = currentManga.author;
 
+  /*
+        Je crée ma variable nomAuteurCible qui prends mon tableau mangaData
+
+        J'applique ensuite la méthode filter, je donne un nom en paramètre (m), je lui dit "pour chaque propriété author de m" regarde si c'est égale 
+
+        le triple égale permet de vérifier si les variables sont égaux ET de même type, par exemple si ce sont deux nombres ou deux string
+
+        donc je dit "regarde si la propriété author de m" est égale à ma variable currentMangaAuthor (l'auteur du manga de la page sur laquelle je me trouve) 
+
+        donc si l'auteur est le même ET "regarde si la propriété id de m. est différente de currentManga.id" donc "regarde si la propriété id de currentManga est différente de l'ID 
+        
+        du manga sur de la page sur laquelle je me trouve"
+        
+        donc ça permet de ne pas afficher deux fois le mangas, par exemple 
+
+        sur la page "One piece Tome 1" ça permet de ne pas afficher dans la section "Du même auteur" le premier tome de One piece
+
+
+        Je parcours ensuite ce même tableau (mangaData) avec la boucle forEach 
+     */
   let nomAuteurCible = mangaData
     // exclure le manga actuel avec && : et Je veux que l'ID du manga examiné (m.id) soit différent de l'ID du manga de ma page actuelle
     .filter((m) => m.author === currentMangaAuthor && m.id != currentManga.id)
     .forEach((t) => {
-    // je créer le li
-        let li = document.createElement("li");
+      // je créer le li
+      let li = document.createElement("li");
 
-        // je mets les contenus que je veux afficher dans l'attribut li
-        li.innerHTML = `
+      // je mets le contenu que je veux afficher dans l'attribut li
+      li.innerHTML = `
         
         <img src=${t.img} width="220px">
         `;
 
-        productList.appendChild(li);
-
-  });
+      productList.appendChild(li);
+    });
 };
 
 diplayMangaSameAuthor();

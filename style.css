@@ -167,19 +167,6 @@ a{
 
 /*** Menu burger icone ***/
 
-/* #logo, .nav-links {
-    visibility: visible;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(-110%);
-    transition: transform 2s ease-in-out;
-    gap: 2rem;
-    background: var(--back-ground-color-main);
-    top: 10px;
-    left: 0px;
-    width: 100%;
-} */
-
 #logo, .nav-links > li {
     visibility: visible;
     display: flex;
@@ -725,10 +712,7 @@ body{
     color: var(--text-color-second);
     text-align: center;
     margin-top: 2rem;
-
 }
-
-
 
 /***** Fin Section Critiques *****/
 
